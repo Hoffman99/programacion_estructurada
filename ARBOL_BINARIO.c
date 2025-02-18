@@ -8,6 +8,8 @@ typedef struct{
     int nivel;
 }binario;
 
+// EL FER COGE CON GORDAS
+
 void buscar(binario arbol[bin], int *indice);
 void insertar_valor(binario arbol[bin], int *indice);
 int nivel (binario arbol[bin], int indice);
