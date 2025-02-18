@@ -85,32 +85,58 @@ void insertar_valor(binario arbol[bin], int *indice){
 
 }
 
-
 void buscar(binario arbol[bin], int *indice){
-    int val, i = 0, band = 0;
+    int val, i = 0, band_encontrar = 0,band_valor=0 , posicion;;
     printf("\nIngresa el valor a buscar >> ");
     scanf("%d", &val);
 
-    while (i <= *indice)        //entramos al ciclo while para buscar nuestro valor en el arbol de izquierda a derecha,
-    {                           // comenzando desde el nodo raiz hasta llegar a los hijos
-        if (arbol[i] == val)
+    while (i <= *indice) //recorrido de todos los hijos izquierdos
+    {   
+        while (band_valor=0)
         {
-            int pote = 1;       // una vez encontrado el valor debemos saber en que nivel del arbol esta, por lo que
-            int nivel = 0;      // a traves de las potencias sabremos, cuando la potencia sea mayor a igual que nues-
-            while (pote <= i)   //tro indice "i" es porque en ese nivel se encuentra el valor
+            if (arbol[i].izquierda==val)
             {
-                pote = pote * 2;  // Calculamos el nivel usando potencias de 2 y aumentando el nivel cada ves
-                nivel++;          // que aumentamos una potencia
+                int respu;
+                printf("\nEl valor %4d fue encontrado en el nivel %2d", val, arbol[i].nivel);
+                band_encontrar=1;
+                printf("\nDeseas quedarte con este valor o seguir buscando \n1 --> quedarse con el valor y salir \n2 --> continuar la busqueda del lado izquierdo");
+                scanf("%d", &respu);
+                if (respu==1)
+                {
+                    posicion=i;
+                    i=*indice+1;
+                }   
             }
-
-            printf("\nEl valor %d fue encontrado en el nivel %d\n", val, nivel);
-            band = 1;
-        }
-        i++;
+        }               
+    i++;
     }
-                                //en caso de no encontrar el valor y por lo tanto no haber modificado la bandera
-    if (band == 0)              // el programa nos dira que no se logro encontrar el valor
+    int respues,o;
+    printf("\nDeseas continuar la busqueda del lado derecho o finalizar\n 1. Continuar\n2. Terminar");
+    scanf("%d", respues);
+    if (respues==1)
+    {
+        
+        while (o <= *indice) //recorrido de todos los hijos derechos
+        {                           
+         if (arbol[o].derecha==val)
+         {
+            int respu;
+            printf("\nEl valor %4d fue encontrado en el nivel %2d", val, arbol[o].nivel);
+            band_encontrar=1;
+            printf("\nDeseas quedarte con este valor o seguir buscando \n1 --> quedarse \n2 --> terminar la busqueda");
+            scanf("%d", &respu);
+            if (respu==1)
+            {
+                posicion=o;
+                o=*indice+1;
+            }
+        }
+         o++;
+        }
+    }
+    
+    if (band_encontrar==0) //si el valor nunca fue encontrado, la bandera nunca habra cambiado de valor, por lo tanto se imprime el siguiente mensaje
     {
         printf("\nEl valor no se encontró dentro del árbol\n");
-    }   
-}   
+    }
+}  
