@@ -69,3 +69,32 @@ void insertar_valor(binario arbol[bin], int *indice){
     }
 
 }
+
+void buscar(binario arbol[bin], int *indice){
+    int val, i = 0, band = 0;
+    printf("\nIngresa el valor a buscar >> ");
+    scanf("%d", &val);
+
+    while (i <= *indice)        //entramos al ciclo while para buscar nuestro valor en el arbol de izquierda a derecha,
+    {                           // comenzando desde el nodo raiz hasta llegar a los hijos
+        if (arbol[i] == val)
+        {
+            int pote = 1;       // una vez encontrado el valor debemos saber en que nivel del arbol esta, por lo que
+            int nivel = 0;      // a traves de las potencias sabremos, cuando la potencia sea mayor a igual que nues-
+            while (pote <= i)   //tro indice "i" es porque en ese nivel se encuentra el valor
+            {
+                pote = pote * 2;  // Calculamos el nivel usando potencias de 2 y aumentando el nivel cada ves
+                nivel++;          // que aumentamos una potencia
+            }
+
+            printf("\nEl valor %d fue encontrado en el nivel %d\n", val, nivel);
+            band = 1;
+        }
+        i++;
+    }
+                                //en caso de no encontrar el valor y por lo tanto no haber modificado la bandera
+    if (band == 0)              // el programa nos dira que no se logro encontrar el valor
+    {
+        printf("\nEl valor no se encontró dentro del árbol\n");
+    }   
+}
