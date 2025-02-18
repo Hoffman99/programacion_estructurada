@@ -69,3 +69,6 @@ void insertar_valor(binario arbol[bin], int *indice){
     }
 
 }
+
+int recorrido(binario arbol[bin], int indice){
+    
