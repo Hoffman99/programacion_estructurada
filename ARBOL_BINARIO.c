@@ -42,22 +42,21 @@ int main(){
     return 0;
 }
 
-int nivel (binario arbol[bin], int indice){
-    int nivel_anterior=arbol[indice-1].nivel, resultado=1, nivel=0;
+int nivel (binario arbol[bin], int i){
+    int nivel_anterior=arbol[i-1].nivel, resultado=1, nivel=0;
     for (int i = 0; i < nivel_anterior; i++) {
         resultado *= 2;
     }
-    if (resultado>indice){
+    if (resultado>i){
         nivel=nivel_anterior;
     }else{
-        
+        nivel=nivel_anterior+1;
     }
-
-
+    return nivel;
 }
 
 void insertar_valor(binario arbol[bin], int *indice){
-    int respuesta;
+    int respuesta, i=*indice;
     printf("¿Cuál número deseas agregar al árbol?/n");
     scanf("%d", &respuesta);
     if(*indice==0){
@@ -68,11 +67,12 @@ void insertar_valor(binario arbol[bin], int *indice){
         if(*indice%2==0){
             arbol[*indice].arbol=respuesta;
             arbol[*indice].izquierda=respuesta;
-            arbol[*indice].nivel=nivel(arbol, indice);
+            arbol[*indice].nivel=nivel(arbol, i);
         }
     }
 
 }
+
 
 void buscar(binario arbol[bin], int *indice){
     int val, i = 0, band = 0;
