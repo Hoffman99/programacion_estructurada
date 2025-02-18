@@ -57,6 +57,12 @@ int nivel (binario arbol[bin], int i){
     return nivel;
 }
 
+int padre(binario arbol[bin], int i){
+`   int nodo=arbol[*indice].arbol, padre;
+    padre=(int)nodo/2;
+    return padre;
+}
+
 void insertar_valor(binario arbol[bin], int *indice){
     int respuesta, i=*indice;
     printf("¿Cuál número deseas agregar al árbol?/n");
@@ -71,6 +77,12 @@ void insertar_valor(binario arbol[bin], int *indice){
             arbol[*indice].arbol=i+1;
             arbol[*indice].izquierda=respuesta;
             arbol[*indice].nivel=nivel(arbol, i);
+            arbol[*indice].padre=padre(arbol, i);
+        }else{
+            arbol[*indice].arbol=i+1;
+            arbol[*indice].derecha=respuesta;
+            arbol[*indice].nivel=nivel(arbol, i);
+            arbol[*indice].padre=padre(arbol, i);
         }
     }
 
