@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#define bin 1024
 typedef struct{
     int derecha;
     int izquierda;
@@ -9,7 +9,7 @@ typedef struct{
 }binario;
 
 int main(){
-    binario arbol[1024];
+    binario arbol[bin];
     int band=0, indice=0;
     while (band==0){
         int eleccion;
@@ -38,7 +38,7 @@ int main(){
     return 0;
 }
 
-int nivel (binario arbol[1024], int indice){
+int nivel (binario arbol[bin], int indice){
     int nivel_anterior=arbol[indice-1].nivel, resultado=1, nivel=0;
     for (int i = 0; i < nivel_anterior; i++) {
         resultado *= 2;
@@ -52,7 +52,7 @@ int nivel (binario arbol[1024], int indice){
 
 }
 
-void insertar_valor(binario arbol[1024], int *indice){
+void insertar_valor(binario arbol[bin], int *indice){
     int respuesta;
     printf("¿Cuál número deseas agregar al árbol?/n");
     scanf("%d", &respuesta);
