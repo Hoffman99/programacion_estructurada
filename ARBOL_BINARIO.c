@@ -71,19 +71,16 @@ void insertar_valor(binario arbol[bin], int *indice){
         arbol[*indice].arbol=i+1;
         arbol[*indice].izquierda=respuesta
         arbol[*indice].nivel=0;
-        (*indice)++;
     }else{
         if(*indice%2!=0){
-            arbol[*indice].arbol=i+1;
             arbol[*indice].izquierda=respuesta;
-            arbol[*indice].nivel=nivel(arbol, i);
-            arbol[*indice].padre=padre(arbol, i);
         }else{
-            arbol[*indice].arbol=i+1;
             arbol[*indice].derecha=respuesta;
-            arbol[*indice].nivel=nivel(arbol, i);
-            arbol[*indice].padre=padre(arbol, i);
         }
+        arbol[*indice].arbol=i+1;
+        arbol[*indice].nivel=nivel(arbol, i);
+        arbol[*indice].padre=padre(arbol, i);
+        (*indice)++;
     }
 
 }
