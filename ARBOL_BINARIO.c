@@ -23,7 +23,7 @@ int main(){
         printf("\n1. Insertar un valor\n");
         printf("2. Buscar un valor\n");
         printf("3. Recorrido en orden\n");
-        printf("4. Mostrar\n")
+        printf("4. Mostrar\n");
         printf("5. Cerrar programa\n");
     scanf("%d", &eleccion);
         switch(eleccion){
@@ -96,7 +96,7 @@ void buscar(binario arbol[bin], int *indice){
 
     while (i <= *indice) //recorrido de todos los hijos izquierdos
     {   
-        while (band_valor=0)
+        while (band_valor==0)
         {
             if (arbol[i].izquierda==val)
             {
@@ -114,9 +114,9 @@ void buscar(binario arbol[bin], int *indice){
         }               
     i++;
     }
-    int respues,o;
+    int respues,o=0;
     printf("\nDeseas continuar la busqueda del lado derecho o finalizar\n 1. Continuar\n2. Terminar");
-    scanf("%d", respues);
+    scanf("%d", &respues);
     if (respues==1)
     {
         
@@ -140,10 +140,10 @@ void buscar(binario arbol[bin], int *indice){
     }
     
     if (band_encontrar==0) //si el valor nunca fue encontrado, la bandera nunca habra cambiado de valor, por lo tanto se imprime el siguiente mensaje
-    {
+   {
         printf("\nEl valor no se encontró dentro del árbol\n");
     }
-}  
+}   
 
 void mostrar(binario arbol[bin]){
     for(int i=0;i<9;i++){
@@ -159,3 +159,5 @@ void mostrar(binario arbol[bin]){
         }
     }
 } 
+
+//elias puto
