@@ -142,8 +142,11 @@ void transver(binario arbol[bin], int posicion){
         trans = arbol[posicion].padre;
         if((trans%2)==0){
             printf("#%d en el nodo %d, su padre es %d y esta en el nivel %d\n", arbol[posicion].derecha, arbol[posicion].arbol, arbol[posicion].padre, arbol[posicion].nivel);
-        }else{
+        }else if((trans%2)!=0){
             printf("#%d en el nodo %d, su padre es %d y esta en el nivel %d\n", arbol[posicion].izquierda, arbol[posicion].arbol, arbol[posicion].padre, arbol[posicion].nivel);
+        }else{
+            printf("#%d en el nodo %d, y es el nodo raiz %d\n", arbol[posicion].izquierda, arbol[posicion].arbol);
+            
         }
         posicion = trans - 1;    /* code */
 
