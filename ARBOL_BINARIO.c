@@ -10,10 +10,11 @@ typedef struct{
 
 // EL FER COGE CON GORDAS
 
-void buscar(binario arbol[bin], int *indice);
+int buscar(binario arbol[bin], int *indice);
 void insertar_valor(binario arbol[bin], int *indice);
 int nivel (binario arbol[bin], int indice);
 void mostrar(binario arbol[bin]);
+int transver(binario arbol[bin], int posicion);
 
 int main(){
     binario arbol[bin];
@@ -89,7 +90,7 @@ void insertar_valor(binario arbol[bin], int *indice){
     (*indice)++;
 }
 
-void buscar(binario arbol[bin], int *indice){
+int buscar(binario arbol[bin], int *indice){
     int val, posicion=-1;
     printf("\nIngresa el valor a buscar >> ");
     scanf("%d", &val);
@@ -98,7 +99,7 @@ void buscar(binario arbol[bin], int *indice){
         if (arbol[i].izquierda == val || arbol[i].derecha == val)
         {
             int respues;
-            printf("\nEl valor %4d fue encontrado en el nivel %2d\n1--> SALIR\n---> Cualquier otro para continuar la busqueda\n>>>", val, arbol[i].nivel);
+            printf("\nEl valor %4d fue encontrado en el nivel %2d\n1--> SALIR\n---> Cualquier otro para continuar la busqueda\n>>> ", val, arbol[i].nivel);
             scanf("%d", &respues);
             if (respues==1)
             {
@@ -110,8 +111,9 @@ void buscar(binario arbol[bin], int *indice){
     }
     if (posicion == -1)
     {
-        printf("\nEl valor no fue encontrado");
+        printf("\nEl valor no fue encontrado \n");
     }
+    transver(arbol,posicion);
 }   
 
 void mostrar(binario arbol[bin]){
@@ -129,4 +131,16 @@ void mostrar(binario arbol[bin]){
     }
 } 
 
-//elias puto
+int transver(binario arbol[bin], int posicion){
+    int trans; 
+    while (posicion>=0){
+        trans = arbol[posicion].padre;
+        if((trans%2)==0){
+            printf("#%d en el nodo %d, su padre es %d y esta en el nivel %d\n", arbol[posicion].izquierda, arbol[posicion].arbol, arbol[posicion].padre, arbol[posicion].nivel);
+        }else{
+            printf("#%d en el nodo %d, su padre es %d y esta en el nivel %d\n", arbol[posicion].derecha, arbol[posicion].arbol, arbol[posicion].padre, arbol[posicion].nivel);
+        }
+        posicion = trans - 1;    /* code */
+
+    }
+    }
