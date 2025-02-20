@@ -99,21 +99,27 @@ void buscar(binario arbol[bin], int *indice){
         if (arbol[i].izquierda == val || arbol[i].derecha == val)
         {
             int respues;
-            printf("\nEl valor %4d fue encontrado en el nivel %2d\n1--> SALIR\n---> Cualquier otro para continuar la busqueda\n>>> ", val, arbol[i].nivel);
+            printf("\nEl valor %4d fue encontrado en el nivel %2d\n1--> SALIR\n2-->Recorrido transversal\n---> Cualquier otro para continuar la busqueda\n>>> ", val, arbol[i].nivel);
             scanf("%d", &respues);
             if (respues==1)
             {
                 posicion=i;
+                break;
+            }
+            if (respues==2)
+            {
+                posicion=i;
                 transver(arbol,posicion);
                 break;
-            }   
+            }
+            
         }   
     }
     if (posicion == -1)
     {
         printf("\nEl valor no fue encontrado \n");
     }
-}   
+} 
 
 void mostrar(binario arbol[bin]){
     for(int i=0;i<9;i++){
