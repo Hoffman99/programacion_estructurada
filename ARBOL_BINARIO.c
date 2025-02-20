@@ -90,58 +90,27 @@ void insertar_valor(binario arbol[bin], int *indice){
 }
 
 void buscar(binario arbol[bin], int *indice){
-    int val, i = 0, band_encontrar = 0,band_valor=0 , posicion;;
+    int val, posicion=-1;
     printf("\nIngresa el valor a buscar >> ");
     scanf("%d", &val);
-
-    while (i <= *indice) //recorrido de todos los hijos izquierdos
-    {   
-        while (band_valor==0)
-        {
-            if (arbol[i].izquierda==val)
-            {
-                int respu;
-                printf("\nEl valor %4d fue encontrado en el nivel %2d", val, arbol[i].nivel);
-                band_encontrar=1;
-                printf("\nDeseas quedarte con este valor o seguir buscando \n1 --> quedarse con el valor y salir \n2 --> continuar la busqueda del lado izquierdo");
-                scanf("%d", &respu);
-                if (respu==1)
-                {
-                    posicion=i;
-                    i=*indice+1;
-                }   
-            }
-        }               
-    i++;
-    }
-    int respues,o=0;
-    printf("\nDeseas continuar la busqueda del lado derecho o finalizar\n 1. Continuar\n2. Terminar");
-    scanf("%d", &respues);
-    if (respues==1)
+    for (int i = 0; i < *indice; i++)
     {
-        
-        while (o <= *indice) //recorrido de todos los hijos derechos
-        {                           
-         if (arbol[o].derecha==val)
-         {
-            int respu;
-            printf("\nEl valor %4d fue encontrado en el nivel %2d", val, arbol[o].nivel);
-            band_encontrar=1;
-            printf("\nDeseas quedarte con este valor o seguir buscando \n1 --> quedarse \n2 --> terminar la busqueda");
-            scanf("%d", &respu);
-            if (respu==1)
+        if (arbol[i].izquierda == val || arbol[i].derecha == val)
+        {
+            int respues;
+            printf("\nEl valor %4d fue encontrado en el nivel %2d\n1--> SALIR\n---> Cualquier otro para continuar la busqueda\n>>>", val, arbol[i].nivel);
+            scanf("%d", &respues);
+            if (respues==1)
             {
-                posicion=o;
-                o=*indice+1;
-            }
-        }
-         o++;
-        }
+                posicion=i;
+                //el warning que muestra es por que falta la funcion de elias, el ocupara posicion
+                break;
+            }   
+        }   
     }
-    
-    if (band_encontrar==0) //si el valor nunca fue encontrado, la bandera nunca habra cambiado de valor, por lo tanto se imprime el siguiente mensaje
-   {
-        printf("\nEl valor no se encontró dentro del árbol\n");
+    if (posicion == -1)
+    {
+        printf("\nEl valor no fue encontrado");
     }
 }   
 
