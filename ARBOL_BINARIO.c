@@ -8,8 +8,6 @@ typedef struct{
     int nivel;
 }binario;
 
-// EL FER COGE CON GORDAS
-
 void buscar(binario arbol[bin], int *indice);
 void insertar_valor(binario arbol[bin], int *indice);
 int nivel (binario arbol[bin], int indice);
@@ -23,9 +21,8 @@ int main(){
         int eleccion;
         printf("\n1. Insertar un valor\n");
         printf("2. Buscar un valor\n");
-        printf("3. Recorrido en orden\n");
-        printf("4. Mostrar\n");
-        printf("5. Cerrar programa\n");
+        printf("3. Mostrar (los primeros 9)\n");
+        printf("4. Cerrar programa\n");
     scanf("%d", &eleccion);
         switch(eleccion){
             case 1:
@@ -35,12 +32,9 @@ int main(){
                 buscar(arbol, &indice);
             break;
             case 3:
-             //   recorrido();
-            break;
-            case 4:
                 mostrar(arbol);
             break;
-            case 5:
+            case 4:
                 band=1;
             break;
             default:
@@ -141,14 +135,14 @@ void transver(binario arbol[bin], int posicion){
     while (posicion>=0){
         trans = arbol[posicion].padre;
         if(trans==0){
-      printf("#%d en el nodo %d, y es el nodo raiz %d\n", arbol[posicion].izquierda, arbol[posicion].arbol);
+      printf("#%d en el nodo %d, y es el nodo raiz\n", arbol[posicion].izquierda, arbol[posicion].arbol);
         }else if((trans%2)!=0){
             printf("#%d en el nodo %d, su padre es %d y esta en el nivel %d\n", arbol[posicion].izquierda, arbol[posicion].arbol, arbol[posicion].padre, arbol[posicion].nivel);
         }else{
             printf("#%d en el nodo %d, su padre es %d y esta en el nivel %d\n", arbol[posicion].derecha, arbol[posicion].arbol, arbol[posicion].padre, arbol[posicion].nivel);
  
         }
-        posicion = trans - 1;    /* code */
+        posicion = trans - 1;
 
     }
-    }            
+    }             
