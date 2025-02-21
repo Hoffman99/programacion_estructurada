@@ -1,0 +1,4 @@
+Lo necesario para ejecutar el siguiente codigo es:
+
+1. Sudo pacman -S graphviz 
+2. pip install graphviz 
