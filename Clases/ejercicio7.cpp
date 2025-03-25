@@ -2,17 +2,17 @@
 using namespace std;
 #define tam 2
 
-class matriz{
+class matriz{//Crea la clase matriz y agrega sus caracteristicas
 	private:
 		double fila1[tam];
         double fila2[tam];
 	public:
 		void llenarmatriz();
-        friend void sumar(const matriz& m1, const matriz& m2);
+        friend void sumar(const matriz& m1, const matriz& m2);//Declaración friend del constructor sumar, para que las funciones que no son miembro de la clase puedna acceder a ellas
 		void multiplicar();	
 };
 
-void matriz::llenarmatriz(){
+void matriz::llenarmatriz(){//Constructor para llenar las filas de la matriz
     cout<<"==> Primera fila (2 valores): ";
     for(int i=0; i<tam; i++){
         cin>>fila1[i];
@@ -23,9 +23,9 @@ void matriz::llenarmatriz(){
     }
 }
 
-void sumar(const matriz& m1, const matriz& m2){
+void sumar(const matriz& m1, const matriz& m2){//Constructor para sumar las matrices
     matriz resultado;
-    for(int i=0; i<tam; i++){
+    for(int i=0; i<tam; i++){//Suma los elementos de ambas filas y los almacena en "resultado"
         resultado.fila1[i]=m1.fila1[i]+m2.fila1[i];
         resultado.fila2[i]=m1.fila2[i]+m2.fila2[i];
     }
@@ -34,12 +34,12 @@ void sumar(const matriz& m1, const matriz& m2){
         cout<<resultado.fila2[0]<<"  "<<resultado.fila2[1]<<endl;
 }
 
-void matriz::multiplicar(){
+void matriz::multiplicar(){//Constructor para multiplicar la primera matriz por un número proporcionado
     matriz resultado;
     double numero;
     cout<<"Por qué número deseas multiplicar la matriz?: ";
     cin>>numero;
-    for(int i=0; i<tam; i++){
+    for(int i=0; i<tam; i++){//Multiplica los valores de las filas por el número proporcionado
         resultado.fila1[i]=fila1[i]*numero;
         resultado.fila2[i]=fila2[i]*numero;
     }
@@ -64,7 +64,7 @@ int main(void){
         cin>>respuesta;
         switch(respuesta){
             case 1:
-                sumar(matriz, otramatriz);
+                sumar(matriz, otramatriz);//Como sumar se declaró como friend no es necesairo agregar "matriz" u "otramatriz" para acceder a este constructor
                 break;
             case 2:
                 matriz.multiplicar();
