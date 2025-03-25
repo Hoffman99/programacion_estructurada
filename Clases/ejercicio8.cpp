@@ -3,7 +3,7 @@
 #define TAM 100
 using namespace std;
 
-class Producto{
+class Producto{//Crea la clase producto y añade sus caracterisitcas
     private:
         string nombre;
         double precio;
@@ -39,11 +39,11 @@ class Producto{
 
 };
 
-class Inventario{
+class Inventario{//Crea la clase inventario que es donde almacenaremos los artículos
     private:
         Producto objetos[TAM];
     public:
-        void agregar(int& _i){
+        void agregar(int& _i){//Constructor para agregar un producto
             cout<<"Nombre del producto ==> ";
             objetos[_i].setnombre();
             cout<<"Precio del producto ==> $";
@@ -52,7 +52,7 @@ class Inventario{
             objetos[_i].setcantidad();
             _i+=1;
         }
-        void buscar(int& _i){
+        void buscar(int& _i){//Constructor pra buscar un artículo en espacial respecto al nombre que proporciona el usuario
             string _buscar;
             cout<<"Ingrese el nombre del producto que desea buscar ==> ";
             cin>>_buscar;
@@ -63,7 +63,7 @@ class Inventario{
                 }
             }
         }
-        void total (int& _i){
+        void total (int& _i){//Calcula el valor economico total de el inventario
             double _total=0;
             for(int j=0;j<_i;j++){
                 _total+=objetos[j].getprecio()*objetos[j].getcantidad();
