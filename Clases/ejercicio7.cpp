@@ -8,7 +8,8 @@ class matriz{//Crea la clase matriz y agrega sus caracteristicas
         double fila2[tam];
 	public:
 		void llenarmatriz();
-        friend void sumar(const matriz& m1, const matriz& m2);//Declaración friend del constructor sumar, para que las funciones que no son miembro de la clase puedna acceder a ellas
+        friend void sumar(const matriz& m1, const matriz& m2);//Declaración friend del constructor sumar, 
+								//para que las funciones que no son miembro de la clase puedna acceder a ellas
 		void multiplicar();	
 };
 
