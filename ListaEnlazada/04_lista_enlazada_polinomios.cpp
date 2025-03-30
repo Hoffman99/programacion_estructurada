@@ -1,5 +1,10 @@
 #include <iostream>
-
+/*SOlicitar al usuario el numero de exponentes para saber el tamaño del poliniomio
+y tambien la variable general de ese polinomio
+Le tienees que pedir al usuario que ingrese los datos del polinomio
+Cuando haga la multiplicación puedes crear un Lista de multiplicación (datos de la multiplciación)
+sumar todos los datos de la lista multiplicación en una llamada resultado y este resultado tiene que ir organizado de mayor a menor
+*/
 using namespace std;
 
 typedef int Elemento;
